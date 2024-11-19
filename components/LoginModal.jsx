@@ -1,5 +1,5 @@
 import { Modal, View, Text, TextInput, Button } from "react-native";
-import loginStyles from "../loginStyles";
+import loginStyles from "./loginStyles";
 
 const LoginModal = ({
   visible,

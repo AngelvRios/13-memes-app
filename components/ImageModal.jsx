@@ -1,5 +1,5 @@
 import { Modal, View, Image, TouchableOpacity, Text } from "react-native";
-import imageStyles from "../imageStyles";
+import imageStyles from "./imageStyles";
 
 const ImageModal = ({ visible, imageUrl, onClose }) => {
   return (

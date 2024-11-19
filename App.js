@@ -4,7 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import MemeItem from "./components/MemeItem";
 import ImageModal from "./components/ImageModal";
 import LoginModal from "./components/LoginModal";
-import RegisterModal from "./components/RegisterModal";
 
 const App = () => {
   const [memes, setMemes] = useState([]);
@@ -16,17 +15,14 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [modalLoginVisible, setModalLoginVisible] = useState(false);
-  const [modalRegisterVisible, setModalRegisterVisible] = useState(false);
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
 
   const fetchMemes = async (page) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://memes-api.grye.org/memes/?page=${page}&limit=10`
+        `https://memes-api.grye.org/memes/?page=${page}&limit=10`,
       );
       const data = await response.json();
 
@@ -61,10 +57,6 @@ const App = () => {
     setModalLoginVisible(true);
   };
 
-  const handleRegisterPress = () => {
-    setModalRegisterVisible(true);
-  };
-
   const handleLogin = () => {
     fetch("https://memes-api.grye.org/token", {
       method: "POST",
@@ -90,33 +82,6 @@ const App = () => {
       })
       .catch((error) => {
         console.error("Login error:", error);
-      });
-  };
-
-  const handleRegister = () => {
-    fetch("https://memes-api.grye.org/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        accept: "application/json",
-      },
-      body: new URLSearchParams({
-        username: username,
-        password: password,
-        email: email,
-      }).toString(),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          setModalRegisterVisible(false);
-          alert("Registration successful!");
-        } else {
-          alert("Registration failed");
-        }
-      })
-      .catch((error) => {
-        console.error("Registration error:", error);
       });
   };
 
@@ -151,22 +116,7 @@ const App = () => {
         onClose={() => setModalLoginVisible(false)}
       />
 
-      <RegisterModal
-        visible={modalRegisterVisible}
-        username={username}
-        password={password}
-        email={email}
-        onUsernameChange={setUsername}
-        onPasswordChange={setPassword}
-        onEmailChange={setEmail}
-        onRegister={handleRegister}
-        onClose={() => setModalRegisterVisible(false)}
-      />
-      
-      <View style={{ flexDirection: "row", justifyContent: "space-around", margin: 10 }}>
-        <Button title="Login" onPress={handleLoginPress} />
-        <Button title="Register" onPress={handleRegisterPress} />
-      </View>
+      <Button title="Login" onPress={handleLoginPress} />
     </View>
   );
 };
