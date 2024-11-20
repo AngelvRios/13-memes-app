@@ -7,12 +7,15 @@ const loginStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo semitransparente
   },
+  buttonLogin: {
+    width:"50px",
+  },
   modalContent: {
-    width: 300,
+    width: 150,
     padding: 20,
     backgroundColor: "white",
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "right",
   },
   input: {
     width: "100%",

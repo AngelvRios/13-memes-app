@@ -5,14 +5,14 @@ const registerStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo semitransparente
+    backgroundColor: "rgba(0, 0, 0, 0.5)", 
   },
   modalContent: {
-    width: 300,
+    width: 150,
     padding: 20,
     backgroundColor: "white",
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "left",
   },
   input: {
     width: "100%",

@@ -1,13 +1,15 @@
 import { Modal, View, Text, TextInput, Button } from "react-native";
-import registerStyles from "../registerStyles";
+import registerStyles from "./registerStyles";
 
 const RegisterModal = ({
   visible,
   username,
   password,
+  passwordconfirm,
   email,
   onUsernameChange,
   onPasswordChange,
+  onPasswordConfirmChange,
   onEmailChange,
   onRegister,
   onClose,
@@ -32,6 +34,13 @@ const RegisterModal = ({
             placeholder="Password"
             value={password}
             onChangeText={onPasswordChange}
+            secureTextEntry
+            style={registerStyles.input}
+          />
+          <TextInput
+            placeholder="Password"
+            value={passwordconfirm}
+            onChangeText={onPasswordConfirmChange}
             secureTextEntry
             style={registerStyles.input}
           />
