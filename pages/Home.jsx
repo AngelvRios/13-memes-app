@@ -114,7 +114,7 @@ const Home = () => {
         onPasswordConfirmChange={setPasswordconfirm}
         onEmailChange={setEmail}
         onRegister={()=>{
-          registerUser(username, password, passwordconfirm, emailS);
+          registerUser(username, password, passwordconfirm, email);
           setModalRegisterVisible(false);
         }}
         onClose={() => setModalRegisterVisible(false)}
@@ -123,7 +123,7 @@ const Home = () => {
       <UploadMemeModal
         visible={modalUploadVisible}
         onClose={() => setModalUploadVisible(false)}
-        onUpload={handleUpload} // Pass handleUpload
+        onUpload={handleUpload}
       />
 
       {isAuthenticated ? (
